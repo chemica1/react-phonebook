@@ -4,15 +4,28 @@ import PhoneForm from './components/PhoneForm';
 
 class App extends Component {
 
-  handleCreate = (data) =>{
-    console.log(data);  //이부분에 디버깅 오래걸림 잘 봐두자
+  id = 0;
+
+  state = {
+    information:[],
   }
+
+  handleCreate=(data)=>{
+    this.setState({  //배열의 직접적인 값변환은 react에서 금기됨. concat이라는 함수를 이용해라
+      information:this.state.information.concat({//기존의 배열을 수정하거나 건드리지않고 새로운 배열을 만들어서 기존의 배열자리에 넣어주는 작업이다.
+       name : data.name,
+       phone: data.phone,
+       id : this.id++ //배열을 랜더링해줄때 고유값인 key값을 만드는것임. 그리고 id는 랜더링을 안하니까 state객체에 안넣은거임
+      })    
+    });
+  }
+
 
   render() {
     return (
-      
      <div>
        <PhoneForm onCreate = {this.handleCreate} />
+       {JSON.stringify(this.state.information)}
      </div>
     );
   }

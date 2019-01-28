@@ -13,13 +13,17 @@ class PhoneForm extends Component {
    }
    
    handelCreate =(data)=>{
-       console.log(data);
+       console.log(data);  //
    }
 
    handleSubmit=(e)=>{
-    e.preventDefault();   
-    this.props.onCreate(this.state);
-   }
+    e.preventDefault(); //form태그 특성상 새로고침되는걸 방지
+    this.props.onCreate(this.state); // name과 phone값을 동시에 주는것 
+    this.setState({  //서브밋하고 나면 빈칸되게..
+        name:'',
+        phone:''
+    })
+   } 
    
     render() {
         return ( //눌러도 새로고침 안되게 하려고 넣음
@@ -38,11 +42,6 @@ class PhoneForm extends Component {
                 />
 
                 <button type="submit">등록</button>
-
-                <div>
-                    {this.state.name} {this.state.phone}
-                </div>
-
             </form>
         );
     }
