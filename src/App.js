@@ -21,7 +21,7 @@ class App extends Component {
     });
   }
 
-  handelRemove =(id)=>{
+  handleRemove =(id)=>{
     const {information} = this.state;
     this.setState({
       information : information.filter(info => info.id !== id)
