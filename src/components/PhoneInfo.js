@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
 class PhoneInfo extends Component {
+    static defaultProps = {
+        info: {
+          name: '이름',
+          phone: '010-0000-0000',
+          id: 0
+        },
+    }
 
     handleRemove = ()=>{
         const{ info, onRemove } = this.props;
@@ -8,7 +15,9 @@ class PhoneInfo extends Component {
     }
 
     render() {
-        const { name, phone} = this.props.info; //프롶을 비구조할당을 통해 받아옴
+        const {
+           name, phone
+        } = this.props.info; //프롶을 비구조할당을 통해 받아옴
         
         const style = {
             border: "1px solid black",

@@ -3,7 +3,8 @@ import PhoneInfo from './PhoneInfo';
 
 class PhoneInfoList extends Component {
     static defaultProps ={ //디폴트프롭값을 넣을땐 static으로 선언함
-        data : [] 
+        list: [],
+        onRemove: () => console.warn('onRemove not defined'),
      }
 
     render() {
@@ -15,7 +16,7 @@ class PhoneInfoList extends Component {
                 onRemove={onRemove}
                 info={info}
                 key={info.id}
-             />
+            />
             ) //key값은 나중에 업뎃할때 편하려구 넣음
         );
         return (
